@@ -7,28 +7,29 @@
   <title>Rohak Agarwal | Developer Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #10151d;
-      --panel: #0f1621;
-      --panel-2: #121c29;
-      --ink: #e9eff8;
-      --ink-dim: #7c8ea6;
-      --line: #232f42;
-      --accent: #5ec8ff;
+      --bg: #040404;
+      --panel: #0b0b0b;
+      --panel-2: #111111;
+      --ink: #ffffff;
+      --ink-dim: #9c9c9c;
+      --line: rgba(255,255,255,.08);
+      --accent: #ffffff;
       --mono-display: 'Roboto Mono', 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
       --mono-body: 'IBM Plex Mono', 'Cascadia Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
     }
- 
+
     * {
       box-sizing: border-box;
     }
- 
+
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 80px;
     }
- 
+
     body {
       margin: 0;
       color: var(--ink);
@@ -38,79 +39,82 @@
       line-height: 1.7;
       position: relative;
     }
- 
+
+
+
     /* Ambient background texture: fixed dot grid, fades toward the bottom */
-    .bg-grid {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.045) 1px, transparent 0);
-      background-size: 28px 28px;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 85%);
-    }
- 
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+}
+
     main {
       position: relative;
       z-index: 1;
       overflow: hidden;
     }
- 
+
     a {
       color: inherit;
       text-decoration: none;
     }
- 
+
     .shell {
       width: min(800px, calc(100% - 40px));
       margin: 0 auto;
     }
- 
+
     .hero {
       padding: 84px 0 30px;
     }
- 
+
     h1,
     h2,
     h3,
     p {
       margin-top: 0;
     }
- 
+
     strong {
       font-weight: 500;
     }
- 
+
     h1 {
       max-width: 820px;
       margin-bottom: 10px;
       font-family: var(--mono-display);
-      font-size: 48px;
-      line-height: 1.14;
-      letter-spacing: -0.01em;
+      font-size: 58px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
       font-weight: 700;
     }
- 
+
     .subtitle {
       margin: 0;
-      color: var(--accent);
+      color: #b8b8b8;
       font-family: var(--mono-display);
-      font-size: 15px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
- 
+
     .hero-copy {
       max-width: 760px;
       color: var(--ink);
       font-size: 16px;
     }
- 
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin: 26px 0 0;
     }
- 
+
     .icon-button {
       display: inline-grid;
       place-items: center;
@@ -118,13 +122,15 @@
       height: 32px;
       border: none;
       background: transparent;
-      color: var(--accent);
+      color: #9d9d9d;
+      transition: .25s;
     }
- 
+
     .icon-button:hover {
       color: var(--ink);
+      transform: translateY(-2px);
     }
- 
+
     .icon-button svg {
       width: 24px;
       height: 24px;
@@ -135,27 +141,39 @@
       stroke-linejoin: round;
       stroke-width: 2;
     }
- 
+
     .icon-button.github svg,
     .icon-button.linkedin svg {
       fill: currentColor;
       stroke: none;
     }
- 
+
     .about-copy {
       max-width: 760px;
       color: var(--ink);
       font-size: 15px;
     }
- 
+
     section {
       padding: 24px 0;
+      animation: fadeUp .6s ease both;
     }
- 
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .section-heading {
       margin-bottom: 20px;
     }
- 
+
     h2 {
       margin-bottom: 8px;
       font-family: var(--mono-display);
@@ -164,29 +182,37 @@
       letter-spacing: -0.005em;
       font-weight: 700;
     }
- 
+
     .section-note {
       max-width: 720px;
       margin: 0;
       color: var(--ink);
       font-size: 14px;
     }
- 
+
     .grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 14px;
     }
- 
+
     .card {
       position: relative;
       padding: 22px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 6px;
-      background: rgba(15, 22, 33, 0.55);
-      backdrop-filter: blur(2px);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      backdrop-filter: blur(12px);
+      transition: transform .25s, border-color .25s, background .25s, box-shadow .25s;
     }
- 
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+    }
+
     .card h3 {
       margin-bottom: 7px;
       font-family: var(--mono-display);
@@ -194,41 +220,41 @@
       line-height: 1.25;
       font-weight: 700;
     }
- 
+
     .card .role-meta {
       margin-bottom: 14px;
       color: var(--accent);
       font-size: 12px;
       font-weight: 400;
     }
- 
+
     .card p {
       color: var(--ink);
     }
- 
+
     .card.has-media {
       padding: 0;
       overflow: hidden;
     }
- 
+
     .card-body {
       display: flex;
       align-items: stretch;
     }
- 
+
     .card-text {
       flex: 1 1 auto;
       min-width: 0;
       padding: 22px;
     }
- 
+
     .card-media {
       position: relative;
       flex: 0 0 220px;
       width: 220px;
       min-height: 0;
     }
- 
+
     .card-media img {
       position: absolute;
       inset: 0;
@@ -237,40 +263,46 @@
       height: 100%;
       object-fit: fill;
     }
- 
+
     .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 16px;
     }
- 
+
     .tag {
       display: inline-flex;
       align-items: center;
       padding: 4px 10px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 999px;
-      background: rgba(94, 200, 255, 0.06);
-      color: var(--accent);
+      background: rgba(255,255,255,.04);
+      color: #d8d8d8;
       font-family: var(--mono-body);
       font-size: 11.5px;
       line-height: 1.4;
       letter-spacing: 0.01em;
       white-space: nowrap;
+      transition: background .2s, color .2s;
     }
- 
+
+    .tag:hover {
+      background: rgba(255,255,255,.08);
+      color: white;
+    }
+
     .education {
     }
- 
+
     .edu-detail {
       margin-top: 14px;
     }
- 
+
     .edu-detail:first-of-type {
       margin-top: 16px;
     }
- 
+
     .edu-label {
       display: block;
       margin-bottom: 4px;
@@ -279,13 +311,13 @@
       font-size: 14px;
       font-weight: 700;
     }
- 
+
     .edu-detail p {
       margin: 0;
       font-size: 14px;
       color: var(--ink);
     }
- 
+
     .edu-meta-row {
       display: flex;
       flex-wrap: wrap;
@@ -294,14 +326,14 @@
       color: var(--ink);
       font-size: 14px;
     }
- 
+
     /* Timeline */
     .timeline {
       position: relative;
       margin-top: 4px;
       padding-left: 28px;
     }
- 
+
     .timeline::before {
       content: "";
       position: absolute;
@@ -309,18 +341,18 @@
       top: 6px;
       bottom: 6px;
       width: 1px;
-      background: linear-gradient(180deg, var(--accent) 0%, var(--line) 12%, var(--line) 88%, transparent 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,.35) 0%, rgba(255,255,255,.08) 12%, rgba(255,255,255,.08) 88%, transparent 100%);
     }
- 
+
     .timeline-item {
       position: relative;
       padding: 0 0 34px 24px;
     }
- 
+
     .timeline-item:last-child {
       padding-bottom: 4px;
     }
- 
+
     .timeline-dot {
       position: absolute;
       left: -28px;
@@ -328,17 +360,18 @@
       width: 13px;
       height: 13px;
       border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--accent);
+      background: white;
+      border: 2px solid white;
+      box-shadow: 0 0 16px rgba(255,255,255,.18);
     }
- 
+
     .timeline-head {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 6px;
     }
- 
+
     .logo-badge {
       flex-shrink: 0;
       width: 42px;
@@ -347,42 +380,42 @@
       border: 1px solid var(--line);
       overflow: hidden;
     }
- 
+
     .logo-badge img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
- 
+
     .timeline-titles h3 {
       margin-bottom: 2px;
       font-family: var(--mono-display);
       font-size: 17px;
       font-weight: 700;
     }
- 
+
     .position-sub {
       display: block;
       color: var(--accent);
       font-size: 13px;
     }
- 
+
     .timeline-meta {
       display: block;
       margin-bottom: 12px;
       margin-left: 54px;
-      color: var(--ink-dim);
+      color: #8e8e8e;
       font-size: 12px;
     }
- 
+
     .timeline-item p {
       margin: 0 0 0 54px;
       color: var(--ink);
       font-size: 14px;
       max-width: 660px;
     }
- 
+
     .timeline-item .stack-line {
       display: block;
       margin-top: 10px;
@@ -390,51 +423,51 @@
       color: var(--accent);
       font-size: 12px;
     }
- 
+
     footer {
       padding: 42px 0 54px;
       color: var(--ink);
     }
- 
+
     .footer-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid rgba(255,255,255,.08);
       padding-top: 26px;
       font-family: var(--mono-display);
       font-size: 13px;
-      color: var(--ink-dim);
+      color: #6d6d6d;
     }
- 
+
     .footer-inner strong {
       color: var(--ink);
     }
- 
+
     @media (max-width: 700px) {
       .hero {
         padding-top: 56px;
       }
- 
+
       h1 {
         font-size: 44px;
       }
- 
+
       .footer-inner {
         display: block;
       }
- 
+
       .footer-inner p {
         margin-top: 10px;
       }
     }
- 
+
     @media (max-width: 560px) {
       .card-body {
         flex-direction: column;
       }
- 
+
       .card-media {
         order: -1;
         width: 100%;
@@ -442,71 +475,71 @@
         flex: 0 0 auto;
       }
     }
- 
+
     @media (max-width: 520px) {
       .shell {
         width: min(100% - 28px, 860px);
       }
- 
+
       h1 {
         font-size: 34px;
       }
- 
+
       .hero-copy {
         font-size: 17px;
       }
- 
+
       .icon-button {
         width: 36px;
         height: 36px;
       }
- 
+
       .icon-button svg {
         width: 26px;
         height: 26px;
       }
- 
+
       section {
         padding: 22px 0;
       }
- 
+
       .timeline {
         padding-left: 22px;
       }
- 
+
       .timeline-item {
         padding-left: 20px;
       }
- 
+
       .timeline-dot {
         left: -22px;
         top: 12px;
       }
- 
+
       .logo-badge {
         width: 36px;
         height: 36px;
         font-size: 12px;
       }
- 
+
       .timeline-meta,
       .timeline-item p,
       .timeline-item .stack-line {
         margin-left: 0;
       }
     }
- 
- 
+
+
   </style>
 </head>
 <body>
   <div class="bg-grid" aria-hidden="true"></div>
- 
+
   <main id="top">
     <section class="hero shell" aria-labelledby="intro-title">
       <h1 id="intro-title">Rohak Agarwal</h1>
       <p class="subtitle">Computer Science @ Georgia Tech</p>
- 
+
       <div class="hero-actions" aria-label="Contact links">
         <a class="icon-button" href="mailto:rohak.agarwal1@gmail.com" aria-label="Email Rohak Agarwal" title="Email">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -526,22 +559,22 @@
         </a>
       </div>
     </section>
- 
+
     <section id="about" class="shell" aria-labelledby="about-title">
       <div class="section-heading">
         <h2 id="about-title">About</h2>
       </div>
       <p class="about-copy">
-        Hello, I am Rohak, a Computer Science student at Georgia Tech. Through previous internships, research, and projects, I have developed a strong foundation in backend development and AI/ML. I am interested in applying these experiences to build software that solves interesting problems and creates a real impact.
+        Hello, I'm Rohak, a Computer Science student at Georgia Tech. Through previous internships, research, and projects, I have developed a strong foundation in backend development and AI/ML. I am interested in applying these experiences to build software that solves interesting problems and creates a real impact.
         Outside of academics and work, I enjoy playing basketball and pickleball, and trying out different restaurants.
       </p>
     </section>
- 
+
     <section id="education" class="shell" aria-labelledby="education-title">
       <div class="section-heading">
         <h2 id="education-title">Education</h2>
       </div>
- 
+
       <div class="grid">
         <article class="card education">
           <h3>Georgia Institute of Technology</h3>
@@ -569,7 +602,7 @@
       <div class="section-heading">
         <h2 id="experience-title">Experience</h2>
       </div>
- 
+
       <div class="timeline">
         <article class="timeline-item current">
           <span class="timeline-dot"></span>
@@ -586,7 +619,7 @@ Worked on AI agent integration for enterprise software, enabling automatic detec
           </p>
           <span class="stack-line">C# · .NET · Microsoft Azure · MCP</span>
         </article>
- 
+
         <article class="timeline-item current">
           <span class="timeline-dot"></span>
           <div class="timeline-head">
@@ -602,7 +635,7 @@ Worked on AI agent integration for enterprise software, enabling automatic detec
           </p>
           <span class="stack-line">Python · NumPy · PyTorch · HPC</span>
         </article>
- 
+
         <article class="timeline-item">
           <span class="timeline-dot"></span>
           <div class="timeline-head">
@@ -616,7 +649,7 @@ Worked on AI agent integration for enterprise software, enabling automatic detec
           <p>
             Built an autonomous drone control web application, enabling users to plan and visualize flight operations through interactive 3D mapping
           </p>
-          <span class="stack-line"> Javascript · Vue.js </span>
+          <span class="stack-line"> Javascript · Vue.js · CesiumJS</span>
         </article>
       </div>
     </section>
@@ -624,7 +657,7 @@ Worked on AI agent integration for enterprise software, enabling automatic detec
       <div class="section-heading">
         <h2 id="projects-title">Projects</h2>
       </div>
- 
+
       <div class="grid">
         <article class="card has-media">
           <div class="card-body">
@@ -645,7 +678,7 @@ Worked on AI agent integration for enterprise software, enabling automatic detec
             </div>
           </div>
         </article>
- 
+
         <article class="card has-media">
           <div class="card-body">
             <div class="card-text">
@@ -667,13 +700,13 @@ Built an LLM-powered Spotify recommendation system that analyzes each user's mus
       </div>
     </section>
   </main>
- 
+
   <footer>
     <div class="shell footer-inner">
       <p><strong>Rohak Agarwal</strong></p>
     </div>
   </footer>
-    <script>
+        <script>
 const IMAGES = {
     assurant: "data:image/jpeg;base64,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",
     gt: "data:image/jpeg;base64,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"
